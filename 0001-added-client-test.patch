@@ -1,0 +1,40 @@
+From 3bb6c27d588ea4a0261f0130eb7f1346a347a53b Mon Sep 17 00:00:00 2001
+From: Anonsa <anonsa.panos@gmail.com>
+Date: Sun, 14 Jan 2024 02:06:12 -0500
+Subject: [PATCH] added client test
+
+---
+ __pycache__/client3.cpython-312.py | Bin 0 -> 1683 bytes
+ client_test.py                      |   5 +++++
+ 2 files changed, 5 insertions(+)
+ create mode 100644 __pycache__/client3.cpython-312.pyc
+
+diff --git a/__pycache__/client3.cpython-312.py b/__pycache__/client3.cpython-312.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..1112cd95645c4ee5416b618b317746d184b2b20c
+GIT binary patch
+literal 1683
+
+literal 0
+HcmV?d00001
+
+diff --git a/client_test.py b/client_test.py
+index af2bf26..7e269ac 100644
+--- a/client_test.py
++++ b/client_test.py
+@@ -7,7 +7,12 @@ class ClientTest(unittest.TestCase):
+       {'top_ask': {'price': 121.2, 'size': 36}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 120.48, 'size': 109}, 'id': '0.109974697771', 'stock': 'ABC'},
+       {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
+     ]
++  
+     """ ------------ Add the assertion below ------------ """
++    # took the raw data and ran it through the function to verify results
++    result = getDataPoint(quotes[0])
++    expected_result = ("ABC", 120.48, 121.2, (120.48 + 121.2)/2)
++    self.assertEqual(result,expected_result)
+ 
+   def test_getDataPoint_calculatePriceBidGreaterThanAsk(self):
+     quotes = [
+-- 
+2.37.1 (Apple Git-137.1)
+
